@@ -21,11 +21,19 @@
 <meta name="twitter:image" content="https://kahuna.in/assets/img/kahuna/dining/DSC_5126.webp">
 <link rel="icon" type="image/svg+xml" href="assets/svg/logo.svg">
 <link rel="stylesheet" href="css/kahuna.css">
+<link rel="stylesheet" href="css/kahuna-fx.css">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://kahuna.in/index.html"}, {"@type": "ListItem", "position": 2, "name": "Dining", "item": "https://kahuna.in/dining.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Restaurant", "name": "Coastal Cravings", "servesCuisine": ["Coastal", "Konkan", "Seafood", "Indian"], "priceRange": "₹₹", "telephone": "+91 8985607288", "url": "https://kahuna.in/dining.html", "address": {"@type": "PostalAddress", "streetAddress": "RJPP+85H, Sukhatanwadi, Kambaliwadi", "addressLocality": "Vengurla", "addressRegion": "Maharashtra", "postalCode": "416516", "addressCountry": "IN"}, "geo": {"@type": "GeoCoordinates", "latitude": "15.83581", "longitude": "73.63548"}, "parentOrganization": {"@type": "Hotel", "name": "Kahuna Resort", "url": "https://kahuna.in/"}}</script>
 
 </head>
 <body class="no-js antialiased">
+
+<div class="k-pre" id="k-pre" role="status" aria-label="Loading Kahuna Resort">
+  <div class="k-pre-logo"><i class="k-pre-mark"></i><i class="k-pre-sun"></i><i class="k-pre-word"></i></div>
+  <div class="k-pre-tide"><svg viewBox="0 0 264 14" aria-hidden="true"><path fill="none" stroke="#3d9cc2" stroke-width="2" stroke-linecap="round" d="M0 7c11 0 11-5 22-5s11 5 22 5 11-5 22-5 11 5 22 5 11-5 22-5 11 5 22 5 11-5 22-5 11 5 22 5 11-5 22-5 11 5 22 5 11-5 22-5 11 5 22 5"/></svg></div>
+  <svg class="k-pre-wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true"><path fill="#ddf3fa" d="M0,0 L1440,0 L1440,22 C1200,58 960,4 720,30 C480,56 240,6 0,34 Z"/></svg>
+</div>
+<script>try{if(sessionStorage.getItem('kPre')){var p=document.getElementById('k-pre');p.parentNode.removeChild(p)}}catch(e){}</script>
 
 <header data-nav class="nav-glass fixed top-0 left-0 right-0 z-50">
   <nav class="max-w-[1400px] mx-auto flex items-center justify-between px-5 md:px-10 py-4" aria-label="Main navigation">
@@ -38,6 +46,7 @@
       <li><a class="nav-link" href="about.html">About</a></li>
       <li><a class="nav-link" href="stay.html">Stay</a></li>
       <li><a class="nav-link" href="dining.html">Dining</a></li>
+      <li><a class="nav-link" href="amenities.html">Amenities</a></li>
       <li><a class="nav-link" href="upskilling.html">Upskilling</a></li>
       <li><a class="nav-link" href="contact.html">Contact</a></li>
     </ul>
@@ -62,6 +71,7 @@
     <a class="mm-link block" href="about.html">About</a>
     <a class="mm-link block" href="stay.html">Stay</a>
     <a class="mm-link block" href="dining.html">Dining</a>
+    <a class="mm-link block" href="amenities.html">Amenities</a>
     <a class="mm-link block" href="upskilling.html">Upskilling</a>
     <a class="mm-link block" href="contact.html">Contact</a>
   </nav>
@@ -72,7 +82,7 @@
 </div>
 
 <!-- ================= PAGE HERO ================= -->
-<section class="page-hero relative h-[68vh] min-h-[480px] overflow-hidden bg-ocean-800">
+<section data-tide="#F8FCFD" class="page-hero relative h-[68vh] min-h-[480px] overflow-hidden bg-ocean-800">
   <img src="assets/img/kahuna/dining/DSC_5126.webp" alt="Breezy Bites rooftop terrace at golden hour, blue tables facing the horizon" class="absolute inset-0 w-full h-full object-cover" data-parallax>
   <div class="absolute inset-0 bg-hero-fade"></div>
   <div class="page-hero-inner relative z-10 h-full max-w-[1400px] mx-auto px-5 md:px-10 flex flex-col justify-end pb-8 md:pb-12">
@@ -220,7 +230,7 @@
 </section>
 
 <!-- ================= CTA ================= -->
-<section class="relative bg-ocean-800 overflow-hidden">
+<section class="relative bg-ocean-800 overflow-hidden" data-bubbles>
   <div class="absolute inset-0 opacity-[0.16]" style="background:url('assets/img/kahuna/dining/DSC_5126.webp') center/cover no-repeat" aria-hidden="true"></div>
   <div class="absolute inset-0 bg-ocean-gradient"></div>
   <div class="relative z-10 max-w-[1400px] mx-auto px-5 md:px-10 py-24 md:py-32 text-center">
@@ -239,11 +249,11 @@
   </div>
 </section>
 
-<footer class="relative bg-ocean-800 text-white overflow-hidden">
-  <div class="absolute inset-x-0 -top-px" style="line-height:0">
-    <svg viewBox="0 0 1440 90" preserveAspectRatio="none" class="w-full h-[70px] md:h-[110px]" style="color:#F8FCFD" aria-hidden="true">
-      <path fill="currentColor" d="M0,40 C240,80 480,10 720,40 C960,70 1200,20 1440,50 L1440,90 L0,90 Z"/>
-    </svg>
+<footer class="k-foot relative bg-ocean-800 text-white overflow-hidden">
+  <div class="k-shore" aria-hidden="true">
+    <svg class="k-shore-w s1" viewBox="0 0 2880 100" preserveAspectRatio="none"><path d="M0,34 Q360,14 720,34 T1440,34 T2160,34 T2880,34 L2880,100 L0,100 Z"/></svg>
+    <svg class="k-shore-w s2" viewBox="0 0 2880 100" preserveAspectRatio="none"><path d="M0,50 Q180,35 360,50 T720,50 T1080,50 T1440,50 T1800,50 T2160,50 T2520,50 T2880,50 L2880,100 L0,100 Z"/></svg>
+    <svg class="k-shore-w s3" viewBox="0 0 2880 100" preserveAspectRatio="none"><path d="M0,62 Q120,51 240,62 T480,62 T720,62 T960,62 T1200,62 T1440,62 T1680,62 T1920,62 T2160,62 T2400,62 T2640,62 T2880,62 L2880,100 L0,100 Z"/><path class="foam" vector-effect="non-scaling-stroke" d="M0,62 Q120,51 240,62 T480,62 T720,62 T960,62 T1200,62 T1440,62 T1680,62 T1920,62 T2160,62 T2400,62 T2640,62 T2880,62"/></svg>
   </div>
   <div class="max-w-[1400px] mx-auto px-5 md:px-10 pt-28 md:pt-40 pb-10">
     <div class="grid lg:grid-cols-12 gap-12 lg:gap-8 mb-16">
@@ -270,6 +280,7 @@
           <li><a class="hover:text-white transition-colors" href="about.html">About Kahuna</a></li>
           <li><a class="hover:text-white transition-colors" href="stay.html">Rooms &amp; Suites</a></li>
           <li><a class="hover:text-white transition-colors" href="dining.html">Dining</a></li>
+          <li><a class="hover:text-white transition-colors" href="amenities.html">Amenities</a></li>
           <li><a class="hover:text-white transition-colors" href="upskilling.html">Upskilling</a></li>
           <li><a class="hover:text-white transition-colors" href="https://letsbook.me/booking/kahunaresortsfindyourshore?checkin=2026-09-10&checkout=2026-09-11&adults=2&children=0">Book a Stay</a></li>
         </ul>
@@ -295,7 +306,8 @@
         </ul>
         <p class="font-body text-[13px] text-sky/60 mt-5 leading-relaxed">
           50 min from Manohar Intl. Airport (Goa)<br>
-          40 min from Sindhudurg Airport
+          40 min from Sindhudurg Airport<br>
+          Airport shuttle on request
         </p>
       </div>
     </div>
@@ -329,5 +341,6 @@
 <script src="assets/js/gsap.min.js" defer></script>
 <script src="assets/js/ScrollTrigger.min.js" defer></script>
 <script src="js/kahuna.js" defer></script>
+<script src="js/kahuna-fx.js" defer></script>
 </body>
 </html>

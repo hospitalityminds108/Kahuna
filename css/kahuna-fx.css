@@ -425,6 +425,7 @@ body:has(.nav-glass:not(.nav-hidden)) .k-jump{top:4.6rem}
   .k-mosaic button,.k-mosaic button:first-child,.k-mosaic button:last-child:nth-child(even){aspect-ratio:auto;height:100%;grid-column:auto}
   .k-mosaic button:first-child{grid-column:span 2;grid-row:span 2}
   .k-mosaic button:nth-child(2){grid-column:span 2}
+  .k-mosaic.is-six button:nth-child(n+5){grid-column:span 2}
 }
 @media (hover:none){.k-mosaic .cap{opacity:1;transform:none}}
 

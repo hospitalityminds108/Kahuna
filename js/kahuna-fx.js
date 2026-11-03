@@ -231,10 +231,6 @@
     var tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
     var vid = hero.querySelector('video');
     if (vid) tl.from(vid, { scale: 1.16, duration: 2.8, ease: 'power2.out' }, 0);
-    tl.from(hero.querySelectorAll('[data-h="title"] .line-mask > span'), { yPercent: 115, duration: 1.3, ease: 'expo.out', stagger: 0.14 }, 0.1)
-      .from(hero.querySelectorAll('[data-h="fade"]'), { y: 28, opacity: 0, duration: 0.95, stagger: 0.1 }, 0.25)
-      .from(hero.querySelector('[data-h="bar"]'), { y: 44, opacity: 0, duration: 1.1 }, 0.7)
-      .from(hero.querySelector('.k-hero2-side'), { opacity: 0, duration: 1 }, 1.1);
   }
 
   /* ---------- Preloader ---------- */
@@ -410,4 +406,97 @@
       apply(btn.getAttribute('data-filter'));
     });
   });
+})();
+
+
+/* ---------- Google reviews: count-up, star pop and auto-rotating slider ---------- */
+(function () {
+  var sec = document.querySelector('[data-greviews]');
+  if (!sec) return;
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var DUR = 6500;
+
+  /* in-view trigger: stars pop, rating counts up */
+  var num = sec.querySelector('[data-gr-num]');
+  function countUp() {
+    if (!num || reduced) return;
+    var target = parseFloat(num.getAttribute('data-gr-num')) || 5, t0 = null;
+    function tick(t) {
+      if (t0 === null) t0 = t;
+      var k = Math.min((t - t0) / 1400, 1), e = 1 - Math.pow(1 - k, 3);
+      num.textContent = (target * e).toFixed(1);
+      if (k < 1) requestAnimationFrame(tick);
+    }
+    num.textContent = '0.0';
+    requestAnimationFrame(tick);
+  }
+  if ('IntersectionObserver' in window) {
+    var seen = new IntersectionObserver(function (es) {
+      if (es[0].isIntersecting) { sec.classList.add('is-in'); countUp(); seen.disconnect(); }
+    }, { threshold: 0.3 });
+    seen.observe(sec);
+  } else { sec.classList.add('is-in'); }
+
+  /* slider */
+  var stage = sec.querySelector('[data-gr-slider]');
+  if (!stage) return;
+  var cards = [].slice.call(stage.querySelectorAll('.k-gr-card'));
+  var dots = [].slice.call(stage.querySelectorAll('.k-gr-dot'));
+  var cur = 0, timer = null, hovering = false, visible = false;
+  stage.style.setProperty('--gr-dur', DUR + 'ms');
+  if (reduced) stage.classList.add('is-static');
+
+  function show(n, dir) {
+    var prev = cur;
+    cur = (n + cards.length) % cards.length;
+    cards.forEach(function (c, i) {
+      c.classList.toggle('is-active', i === cur);
+      c.classList.toggle('is-prev', i !== cur && (dir < 0 ? i === prev : i < cur));
+      c.setAttribute('aria-hidden', i === cur ? 'false' : 'true');
+    });
+    dots.forEach(function (d, i) {
+      d.classList.remove('is-active');
+      if (i === cur) { void d.offsetWidth; d.classList.add('is-active'); d.setAttribute('aria-current', 'true'); }
+      else d.removeAttribute('aria-current');
+    });
+    schedule();
+  }
+  function schedule() {
+    clearTimeout(timer);
+    if (reduced || hovering || !visible) return;
+    timer = setTimeout(function () { show(cur + 1, 1); }, DUR);
+  }
+  function pause(on) {
+    hovering = on;
+    stage.classList.toggle('is-paused', on);
+    if (on) clearTimeout(timer); else show(cur, 1);
+  }
+  stage.addEventListener('mouseenter', function () { pause(true); });
+  stage.addEventListener('mouseleave', function () { pause(false); });
+  stage.addEventListener('focusin', function () { pause(true); });
+  stage.addEventListener('focusout', function () { pause(false); });
+  dots.forEach(function (d, i) { d.addEventListener('click', function () { show(i, i < cur ? -1 : 1); }); });
+  var pv = stage.querySelector('[data-gr-prev]'), nx = stage.querySelector('[data-gr-next]');
+  if (pv) pv.addEventListener('click', function () { show(cur - 1, -1); });
+  if (nx) nx.addEventListener('click', function () { show(cur + 1, 1); });
+  stage.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft') show(cur - 1, -1);
+    if (e.key === 'ArrowRight') show(cur + 1, 1);
+  });
+  /* swipe */
+  var x0 = null;
+  stage.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+  stage.addEventListener('touchend', function (e) {
+    if (x0 === null) return;
+    var dx = e.changedTouches[0].clientX - x0; x0 = null;
+    if (Math.abs(dx) > 40) show(cur + (dx < 0 ? 1 : -1), dx < 0 ? 1 : -1);
+  }, { passive: true });
+  /* only run while on screen */
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) {
+      visible = es[0].isIntersecting;
+      if (visible) { if (!hovering) stage.classList.remove('is-paused'); show(cur, 1); }
+      else { clearTimeout(timer); stage.classList.add('is-paused'); }
+    }, { threshold: 0.25 }).observe(stage);
+  } else { visible = true; schedule(); }
 })();

@@ -228,6 +228,39 @@
   });
 
   /* ============================================================
+     HERO VIDEO — poster paints first; the walkthrough streams in
+     after the page has loaded, and is skipped on slow / data-saver
+     connections and for reduced-motion users.
+     ============================================================ */
+  (function () {
+    var v = document.querySelector('video[data-hero-video]');
+    if (!v) return;
+    var conn = navigator.connection || {};
+    var slow = conn.saveData || /(^|-)2g$/.test(conn.effectiveType || '');
+    if (prefersReduced || slow) return;
+    function start() {
+      var small = window.matchMedia('(max-width: 767px)').matches;
+      v.src = (small && v.dataset.heroSrcM) || v.dataset.heroSrc;
+      v.addEventListener('canplay', function () { v.classList.add('is-playing'); }, { once: true });
+      var p = v.play();
+      if (p && p.catch) p.catch(function () {});
+    }
+    function defer() { (window.requestIdleCallback || function (f) { setTimeout(f, 200); })(start); }
+    if (document.readyState === 'complete') defer();
+    else window.addEventListener('load', defer, { once: true });
+    /* pause when the hero is off-screen */
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          if (!v.src) return;
+          if (e.isIntersecting) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+          else v.pause();
+        });
+      }, { threshold: 0.05 }).observe(v);
+    }
+  })();
+
+  /* ============================================================
      VIDEO — lazy autoplay via IntersectionObserver
      ============================================================ */
   (function lazyVideo() {

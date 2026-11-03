@@ -508,3 +508,81 @@ body:has(.nav-glass:not(.nav-hidden)) .k-jump{top:4.6rem}
 @media (prefers-reduced-motion:reduce){.k-js .k-reveal{opacity:1;transform:none;transition:none}}
 
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* Airport shuttle route card */
+.k-route{border-radius:1.6rem;padding:2rem 2rem 1.75rem;color:#fff;background:linear-gradient(160deg,hsla(0,0%,100%,.12),hsla(0,0%,100%,.04));border:1px solid hsla(0,0%,100%,.18);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:0 30px 70px -40px rgba(0,0,0,.6)}
+.k-route .eyebrow{margin-bottom:1.5rem}
+.k-route-leg{position:relative;display:grid;gap:1.25rem;padding-left:2.1rem}
+.k-route-leg:before{content:"";position:absolute;left:.5rem;top:.7rem;bottom:.7rem;border-left:2px dashed hsla(0,0%,100%,.35)}
+.k-route-pt{position:relative}
+.k-route-pt:before{content:"";position:absolute;left:-2.1rem;top:.45rem;width:1rem;height:1rem;border-radius:9999px;background:#7fd3ea;box-shadow:0 0 0 5px hsla(190,70%,70%,.18)}
+.k-route-pt.is-end:before{background:#fff;box-shadow:0 0 0 5px hsla(0,0%,100%,.2)}
+.k-route-pt b{display:block;font-family:"Cormorant Garamond",serif;font-weight:400;font-size:1.45rem;line-height:1.2}
+.k-route-pt small{display:block;margin-top:.15rem;font-size:12.5px;color:rgba(221,243,250,.7);letter-spacing:.04em}
+.k-route-time{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem .9rem;border-radius:9999px;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#dff4fb;background:hsla(0,0%,100%,.1);border:1px solid hsla(0,0%,100%,.22)}
+.k-route-time .k-ico{width:1.15em;height:1.15em}
+.k-route-rule{height:1px;margin:1.6rem 0;background:hsla(0,0%,100%,.16)}
+.k-route-note{margin-top:1.6rem;padding-top:1.25rem;border-top:1px solid hsla(0,0%,100%,.14);font-size:13px;line-height:1.7;color:rgba(221,243,250,.78)}
+@media (max-width:520px){.k-route{padding:1.5rem 1.25rem}.k-route-pt b{font-size:1.25rem}}
+
+/* ============ Google reviews ============ */
+.k-greviews{background:linear-gradient(180deg,#f8fcfd 0%,#eaf6fb 100%)}
+.k-gr-blob{position:absolute;border-radius:9999px;filter:blur(70px);opacity:.55;pointer-events:none}
+.k-gr-blob.is-a{width:26rem;height:26rem;left:-8rem;top:-6rem;background:#bfe9f6;animation:grFloat 14s ease-in-out infinite}
+.k-gr-blob.is-b{width:22rem;height:22rem;right:-6rem;bottom:-5rem;background:#fde8b8;animation:grFloat 18s ease-in-out infinite reverse}
+@keyframes grFloat{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(30px,24px,0)}}
+.k-gr-badge{display:inline-flex;align-items:center;gap:.7rem;padding:.45rem 1.1rem .45rem .45rem;border-radius:9999px;background:#fff;border:1px solid rgba(7,59,92,.1);box-shadow:0 12px 30px -18px rgba(7,59,92,.45);font-family:Manrope,system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#073b5c}
+.k-gr-logo{position:relative;display:inline-flex;align-items:center;justify-content:center;width:2.1rem;height:2.1rem;border-radius:9999px;background:#fff;box-shadow:0 0 0 1px rgba(7,59,92,.08)}
+.k-gr-logo svg{width:1.15rem;height:1.15rem}
+.k-gr-logo:after{content:"";position:absolute;inset:0;border-radius:inherit;border:2px solid #4285f4;opacity:0;animation:grRing 3.2s ease-out infinite}
+@keyframes grRing{0%{transform:scale(1);opacity:.55}70%,100%{transform:scale(1.9);opacity:0}}
+.k-gr-score{display:flex;align-items:center;gap:1.25rem;margin-top:1.75rem}
+.k-gr-num{font-family:"Cormorant Garamond",serif;font-size:clamp(4.5rem,9vw,6.5rem);line-height:.9;font-weight:400;color:#073b5c;font-variant-numeric:tabular-nums}
+.k-gr-stars{display:flex;gap:.2rem;color:#f4b400}
+.k-gr-stars svg{width:1.55rem;height:1.55rem;fill:currentColor;opacity:0;transform:scale(.2) rotate(-40deg)}
+.k-greviews.is-in .k-gr-stars svg{animation:grPop .7s cubic-bezier(.34,1.56,.64,1) forwards;animation-delay:calc(var(--i)*.13s + .35s)}
+@keyframes grPop{to{opacity:1;transform:none}}
+.k-gr-count{margin-top:.45rem;font-family:Manrope,system-ui,sans-serif;font-size:13px;color:rgba(23,33,38,.62)}
+.k-gr-count b{color:#073b5c}
+.k-gr-btn{gap:.75rem}
+.k-gr-btn-g{display:inline-flex;width:1.5rem;height:1.5rem;align-items:center;justify-content:center;border-radius:9999px;background:#fff}
+.k-gr-btn-g svg{width:.95rem;height:.95rem}
+
+.k-gr-stage{position:relative}
+.k-gr-track{display:grid}
+.k-gr-card{grid-area:1/1;position:relative;display:flex;flex-direction:column;gap:1.4rem;padding:2.4rem 2.4rem 2rem;border-radius:2rem;background:#fff;border:1px solid rgba(7,59,92,.08);box-shadow:0 40px 80px -50px rgba(7,59,92,.55);opacity:0;visibility:hidden;transform:translateX(48px) scale(.97);transition:opacity .7s ease,transform .95s var(--ease-expo),visibility 0s .7s}
+.k-gr-card.is-active{opacity:1;visibility:visible;transform:none;transition:opacity .7s ease .12s,transform .95s var(--ease-expo) .12s,visibility 0s}
+.k-gr-card.is-prev{transform:translateX(-48px) scale(.97)}
+.k-gr-quote{position:absolute;right:1.8rem;top:1.4rem;width:4.5rem;height:4.5rem;fill:#ddf3fa;animation:grBob 6s ease-in-out infinite}
+@keyframes grBob{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-8px) rotate(4deg)}}
+.k-gr-card-stars{display:flex;gap:.18rem;color:#f4b400}
+.k-gr-card-stars svg{width:1.2rem;height:1.2rem;fill:currentColor}
+.k-gr-card.is-active .k-gr-card-stars svg{animation:grPop .55s cubic-bezier(.34,1.56,.64,1) both;animation-delay:calc(var(--i)*.08s + .3s);opacity:0;transform:scale(.2) rotate(-40deg)}
+.k-gr-card blockquote{margin:0;position:relative;font-family:"Cormorant Garamond",serif;font-size:clamp(1.3rem,2.1vw,1.7rem);line-height:1.5;color:#073b5c}
+.k-gr-card footer{display:flex;align-items:center;gap:.9rem;margin-top:.4rem;padding-top:1.4rem;border-top:1px solid rgba(7,59,92,.1)}
+.k-gr-card footer b{display:block;font-family:Manrope,system-ui,sans-serif;font-size:15px;color:#073b5c}
+.k-gr-card footer small{display:block;font-family:Manrope,system-ui,sans-serif;font-size:12.5px;color:rgba(23,33,38,.55)}
+.k-gr-avatar{display:inline-flex;align-items:center;justify-content:center;width:2.9rem;height:2.9rem;border-radius:9999px;font-family:Manrope,system-ui,sans-serif;font-weight:700;color:#fff;background:linear-gradient(135deg,#126e9b,#3d9cc2)}
+.k-gr-card:nth-child(2) .k-gr-avatar{background:linear-gradient(135deg,#34a853,#7ac98a)}
+.k-gr-card:nth-child(3) .k-gr-avatar{background:linear-gradient(135deg,#ea4335,#f59a8f)}
+.k-gr-g{margin-left:auto;display:inline-flex;width:1.7rem;height:1.7rem}
+.k-gr-g svg{width:100%;height:100%}
+.k-gr-ctrl{display:flex;align-items:center;justify-content:space-between;margin-top:1.5rem;padding:0 .4rem}
+.k-gr-dots{display:flex;gap:.6rem}
+.k-gr-dot{position:relative;width:.7rem;height:.7rem;border-radius:9999px;background:rgba(7,59,92,.2);border:0;padding:0;cursor:pointer;overflow:hidden;transition:width .5s var(--ease-expo),background .3s}
+.k-gr-dot i{position:absolute;inset:0;background:#126e9b;transform:scaleX(0);transform-origin:left}
+.k-gr-dot.is-active{width:3rem}
+.k-gr-dot.is-active i{animation:grProg var(--gr-dur,6500ms) linear forwards}
+.k-gr-stage.is-paused .k-gr-dot.is-active i{animation-play-state:paused}
+.k-gr-stage.is-static .k-gr-dot.is-active i{animation:none;transform:scaleX(1)}
+@keyframes grProg{to{transform:scaleX(1)}}
+.k-gr-arrows{display:flex;gap:.6rem}
+.k-gr-arrow{display:inline-flex;align-items:center;justify-content:center;width:2.9rem;height:2.9rem;border-radius:9999px;border:1px solid rgba(7,59,92,.18);background:#fff;color:#073b5c;cursor:pointer;transition:background .3s,color .3s,transform .5s var(--ease-expo)}
+.k-gr-arrow svg{width:1.1rem;height:1.1rem;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.k-gr-arrow:hover{background:#073b5c;color:#fff;transform:translateY(-2px)}
+@media (max-width:640px){.k-gr-card{padding:1.8rem 1.4rem 1.5rem}.k-gr-quote{width:3.2rem;height:3.2rem}}
+@media (prefers-reduced-motion:reduce){
+  .k-gr-blob,.k-gr-logo:after,.k-gr-quote{animation:none}
+  .k-gr-stars svg,.k-gr-card.is-active .k-gr-card-stars svg{opacity:1;transform:none;animation:none!important}
+  .k-gr-card,.k-gr-card.is-active{transition:opacity .01s,visibility 0s}
+}

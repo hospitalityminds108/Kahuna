@@ -108,7 +108,8 @@
 @media (min-width:768px){.k-grid{gap:1.75rem}}
 .k-cols-2,.k-cols-3,.k-cols-4{grid-template-columns:minmax(0,1fr)}
 @media (min-width:640px){.k-cols-2,.k-cols-3,.k-cols-4{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (min-width:1024px){.k-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.k-cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (min-width:1024px){.k-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (min-width:1200px){.k-cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}}
 .k-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
 @media (min-width:640px){.k-stats{grid-template-columns:repeat(4,minmax(0,1fr))}}
 
@@ -586,3 +587,21 @@ body:has(.nav-glass:not(.nav-hidden)) .k-jump{top:4.6rem}
   .k-gr-stars svg,.k-gr-card.is-active .k-gr-card-stars svg{opacity:1;transform:none;animation:none!important}
   .k-gr-card,.k-gr-card.is-active{transition:opacity .01s,visibility 0s}
 }
+
+/* ============ Responsive hardening ============ */
+.btn{white-space:normal;max-width:100%;text-align:center;line-height:1.35}
+@media (min-width:640px){.sm\:flex-row{flex-wrap:wrap}}
+@media (max-width:1023px){
+  /* split layouts stack on tablet instead of squeezing into two narrow columns */
+  .lg\:grid-cols-12{grid-template-columns:minmax(0,1fr)}
+  footer .lg\:grid-cols-12{grid-template-columns:repeat(2,minmax(0,1fr))}
+  footer .lg\:grid-cols-12 > *{grid-column:auto}
+}
+@media (max-width:767px){footer .lg\:grid-cols-12{grid-template-columns:minmax(0,1fr)}}
+@media (pointer:coarse){.link-arrow{min-height:44px}}
+@media (min-width:768px) and (max-width:1023px){
+  .md\:grid-cols-3{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .md\:grid-cols-3 > :last-child:nth-child(odd){grid-column:1/-1}
+}
+@media (min-width:1024px) and (max-width:1279px){.lg\:grid-cols-4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:767px){footer{padding-bottom:4.5rem!important}}
